@@ -36,13 +36,17 @@
 
         if (navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({
-                    video: true
+                    video: {
+                        facingMode: {
+                            exact: "environment"
+                        }
+                    }
                 })
                 .then(function(stream) {
                     video.srcObject = stream;
                 })
-                .catch(function(err0r) {
-                    console.log("Something went wrong!");
+                .catch(function(error) {
+                    console.log("Something went wrong!", error);
                 });
 
             document.getElementById('js-take-pic').addEventListener('click', function(e) {
