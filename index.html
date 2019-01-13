@@ -26,9 +26,10 @@
 
 <body>
     <div id="container">
-        <video autoplay="true" id="videoElement">
-     
-    </video>
+        <video autoplay="true" id="videoElement"></video>
+        <canvas></canvas>
+        <img id="snap">
+        <button id="js-take-pic">Take snapshot</button>
     </div>
     <script>
         var video = document.querySelector("#videoElement");
@@ -43,6 +44,32 @@
                 .catch(function(err0r) {
                     console.log("Something went wrong!");
                 });
+
+            document.getElementById('js-take-pic').addEventListener('click', function(e) {
+                takePicture();
+            });
+        }
+        var takePicture = function() {
+            var hidden_canvas = document.querySelector('canvas'),
+                image = document.querySelector('#snap'),
+
+                // Get the exact size of the video element.
+                width = 300,
+                height = 300,
+                // Context object for working with the canvas.
+                context = hidden_canvas.getContext('2d');
+            // Set the canvas to the same dimensions as the video.
+            hidden_canvas.width = width;
+            hidden_canvas.height = height;
+
+            // Draw a copy of the current frame from the video on the canvas.
+            context.drawImage(video, 0, 0, width, height);
+
+            // Get an image dataURL from the canvas.
+            var imageDataURL = hidden_canvas.toDataURL('image/png');
+
+            // Set the dataURL as source of an image element, showing the captured photo.
+            image.setAttribute('src', imageDataURL);
         }
     </script>
 </body>
