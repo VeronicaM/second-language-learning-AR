@@ -1,0 +1,30 @@
+{
+    "name": "ar-sll",
+    "version": "1.0.0",
+    "description": "google vision and yandex translation powered Second Language Learning",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/VeronicaM/AR-SLL.git"
+    },
+    "keywords": [
+        "SLL",
+        "Google",
+        "Vision",
+        "Yandex"
+    ],
+    "author": "Veronica Mihai",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/VeronicaM/AR-SLL/issues"
+    },
+    "homepage": "https://github.com/VeronicaM/AR-SLL#readme",
+    "dependencies": {
+        "@google-cloud/vision": "^0.24.0",
+        "dotenv": "^6.2.0"
+    }
+}
