@@ -22,9 +22,10 @@ var takePicture = function () {
     var imageDataURL = hidden_canvas.toDataURL('image/png');
     return fetch(url, {
         method: "POST",
-        mode: "cors",
-        cache: "no-cache",
-        body: imageDataURL, // body data type must match "Content-Type" header
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({img: imageDataURL}), // body data type must match "Content-Type" header
     }).then(response => {
         console.log(response);
     });

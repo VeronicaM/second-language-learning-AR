@@ -1,16 +1,15 @@
 // Imports the Google Cloud client library
-const vision = require('@google-cloud/vision');
+var vision = require('@google-cloud/vision');
 
 exports.analyse = (req, res) => {
-    const img = req.img;
+    var img = req.body.img;
     // Creates a client
-    const client = new vision.ImageAnnotatorClient();
+    var client = new vision.ImageAnnotatorClient();
 
     // Performs label detection on the image file
-    client
-        .labelDetection(img)
+    client.labelDetection('uploads/'+img.id)
         .then(results => {
-            const labels = results[0].labelAnnotations;
+            var labels = results[0].labelAnnotations;
             
             // Logging
             console.log('Labels:');
