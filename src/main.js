@@ -1,4 +1,6 @@
-var video = document.querySelector("#videoElement");
+var video = document.getElementById("videoElement");
+var labels = document.getElementById("js-labels");
+var errorMsg = document.getElementById('js-error-msg');
 var facingMode = 'environment';
 
 // Get the exact size of the video element.
@@ -7,7 +9,6 @@ var height = 300;
 
 var takePicture = function () {
     var hidden_canvas = document.querySelector('canvas');
-    var image = document.querySelector('#snap');
     const url = 'api/img-processing';
     // Context object for working with the canvas.
     var context = hidden_canvas.getContext('2d');
@@ -22,13 +23,17 @@ var takePicture = function () {
     var imageDataURL = hidden_canvas.toDataURL('image/png');
     return fetch(url, {
         method: "POST",
-        headers:{
+        headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({img: imageDataURL}), // body data type must match "Content-Type" header
-    }).then(response => {
-        console.log(response);
-    });
+        body: JSON.stringify({ img: imageDataURL })
+    }).then(response => response.json())
+        .then(response => {
+            const listLabels = response && response.map((label) => {
+                return `<li>${label.description}</li>`
+            }).join('');
+            labels.innerHTML = `<ul>${listLabels}</ul>`;
+        });
 }
 
 var loadCamera = function (facingMode) {
@@ -41,12 +46,12 @@ var loadCamera = function (facingMode) {
             }
         })
             .then(function (stream) {
-                document.getElementById('js-error-msg').innerHTML = "";
+                // errorMsg.innerHTML = "";
                 video.srcObject = stream;
                 video.play();
             })
             .catch(function (error) {
-                document.getElementById('js-error-msg').innerHTML = error.message + ' '  + error.name; 
+                // errorMsg.innerHTML = error.message + ' ' + error.name;
                 console.log("Something went wrong!", error);
             });
     }
