@@ -43,6 +43,7 @@ var loadCamera = function (facingMode) {
             .then(function (stream) {
                 document.getElementById('js-error-msg').innerHTML = "";
                 video.srcObject = stream;
+                video.play();
             })
             .catch(function (error) {
                 document.getElementById('js-error-msg').innerHTML = error.message + ' '  + error.name; 
@@ -53,6 +54,8 @@ var loadCamera = function (facingMode) {
 
 var switchCamera = function () {
     facingMode = facingMode === 'environment' ? 'user' : 'enviroment';
+    video.pause()
+    video.srcObject = null
     loadCamera(facingMode);
 };
 
