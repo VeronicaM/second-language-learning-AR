@@ -41,9 +41,11 @@ var loadCamera = function (facingMode) {
             }
         })
             .then(function (stream) {
+                document.getElementById('js-error-msg').innerHTML = "";
                 video.srcObject = stream;
             })
             .catch(function (error) {
+                document.getElementById('js-error-msg').innerHTML = error.message + ' '  + error.name; 
                 console.log("Something went wrong!", error);
             });
     }
