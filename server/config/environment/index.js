@@ -20,7 +20,14 @@ var all = {
     ip: process.env.IP || '0.0.0.0',
      // Root path of server
     root: path.normalize(__dirname + '/../../..'),
-
+    // MongoDB connection options
+    mongo: {
+        options: {
+            db: {
+                safe: true
+            }
+        }
+    },
 };
 
 // Export the config object based on the NODE_ENV

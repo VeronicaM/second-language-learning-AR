@@ -10,6 +10,8 @@ var path = require('path');
 module.exports = function(app) {
 
     app.use('/api/img-processing', require('./api/img-processing'));
+    app.use('/api/translate', require('./api/translate'));
+    app.use('/api/words', require('./api/words'));
 
     // All undefined asset or api routes should return a 404
     app.route('/:url(api|auth|components|app|bower_components|assets)/*')

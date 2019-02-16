@@ -4,7 +4,6 @@ exports.analyse = (req, res) => {
     var img = req.body && req.body.img && req.body.img.split(',')[1];
 
     // Performs label detection on the image file
-    console.log(process.env.GOOGLE_API_KEY);
     var options = {
         method: 'POST',
         uri: `https://vision.googleapis.com/v1/images:annotate?key=${process.env.GOOGLE_API_KEY}`,
