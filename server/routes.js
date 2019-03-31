@@ -9,7 +9,7 @@ var path = require('path');
 
 module.exports = function(app) {
     app.use(function(req, res, next) {
-        res.header('Access-Control-Allow-Origin', 'http://local.internal.busuu.com:7000')
+        res.header('Access-Control-Allow-Origin', '*')
         res.header('Access-Control-Allow-Credentials', true)
         res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS')
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, enctype , Accept, Authorization, Access-Control-Allow-Credentials')
