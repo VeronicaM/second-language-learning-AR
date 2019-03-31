@@ -51,12 +51,30 @@ function handleError(res, statusCode) {
     };
 }
 
-function addTranslations(words, {interfaceLang, courseLang}) {
+function wordAlreadySave(text) {
+    return Word.find({ text: text }).then((response) => {
+        if (response && response.length) return true;
+        return false;
+    });
+}
+
+function addTranslations(words, { interfaceLang, courseLang }) {
     const result = words && words.map((word) => {
-        const result = translateController.translateWord({text: word.text || word.description, interfaceLang, courseLang});
+        const wordText = word.text || word.description;
+
+        wordAlreadySave(wordText).then((isExisting) => {
+            if(!isExisting) {
+                var WordBody = {
+                    "text": wordText
+                };
+                Word.create(WordBody);
+            }
+        });
+
+        const result = translateController.translateWord({ text: wordText, interfaceLang, courseLang });
         return result;
     });
-   
+
     return Promise.all(result).then((translateWords) => {
         return translateWords;
     });
