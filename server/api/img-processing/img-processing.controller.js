@@ -1,7 +1,9 @@
 var rp = require('request-promise');
+var wordsController = require('../words/words.controller.js');
 
 exports.analyse = (req, res) => {
     var img = req.body && req.body.img && req.body.img.split(',')[1];
+    var courseLang = req.body && req.body.courseLang;
 
     // Performs label detection on the image file
     var options = {
@@ -26,20 +28,18 @@ exports.analyse = (req, res) => {
     };
 
     rp(options).then(results => {
-        console.log(results);
-
-        if(!(results.responses && results.responses[0])) return res.send([]);
+        if (!(results.responses && results.responses[0])) return res.send([]);
 
         var labels = results.responses[0].labelAnnotations;
 
-        // Logging
-        console.log('Labels:');
-        labels.forEach(label => console.log(label.description));
-
-        res.send(labels);
+        wordsController.addTranslations(labels, { interfaceLang: 'en', courseLang: courseLang })
+            .then((wordsWithTranslations) => {
+                wordsWithTranslations.forEach(word => console.log(word.text, ' - ', word.courseLang));
+                res.send(wordsWithTranslations);
+            });
     })
-    .catch(err => {
-        console.error('ERROR:', err);
-        res.status(500).send(`Something went wrong: ${err}`);
-    }); 
+        .catch(err => {
+            console.error('ERROR:', err);
+            res.status(500).send(`Something went wrong: ${err}`);
+        });
 }

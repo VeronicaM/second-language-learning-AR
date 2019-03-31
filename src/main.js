@@ -21,18 +21,20 @@ var takePicture = function () {
 
     // Get an image dataURL from the canvas.
     var imageDataURL = hidden_canvas.toDataURL('image/png');
+    var courseLang = document.querySelector('#courseLanguage').value;
     return fetch(url, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ img: imageDataURL })
+        body: JSON.stringify({ img: imageDataURL, courseLang: courseLang })
     }).then(response => response.json())
         .then(response => {
-            const listLabels = response && response.map((label) => {
-                return `<li>${label.description}</li>`
+            const listLabels = response && response.map((word) => {
+                return `<div>${word.courseLang} ( ${word.text})</div>`
             }).join('');
-            labels.innerHTML = `<ul>${listLabels}</ul>`;
+            labels.innerHTML = `<label><h2> You pointed at: </h2> </label>
+                    <div class='words-list'>${listLabels}</div>`;
         });
 }
 

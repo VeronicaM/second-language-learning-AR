@@ -11,11 +11,31 @@
 </head>
 
 <body>
+    <div class="btn__container">
+        <h1> <label for="courseLanguage">What are you studying ?</label></h1>
+        <select id="courseLanguage" class="course-lang__select">
+            <option label="Arabic" value="ar">Arabic</option>
+            <option label="Chinese" value="zh">Chinese</option>
+            <option label="English" value="string:en">English</option>
+            <option label="French" value="fr" selected="selected">French</option>
+            <option label="German" value="de">German</option>
+            <option label="Italian" value="it">Italian</option>
+            <option label="Japanese" value="ja">Japanese</option>
+            <option label="Polish" value="pl">Polish</option>
+            <option label="Portuguese" value="pt">Portuguese</option>
+            <option label="Russian" value="ru">Russian</option>
+            <option label="Spanish" value="string:es">Spanish</option>
+            <option label="Turkish" value="string:tr">Turkish</option>
+        </select>
+    </div>
     <div id="container">
         <video autoplay="true" id="videoElement"></video>
+        <div class="btn__container">
+            <img alt="switch camera" id="js-switch-camera" src="./resources/icon-camera.png" class="main__icon" />
+            <button class="btn__analyze" id="js-take-pic">Analyze Object</button>
+        </div>
+
         <canvas></canvas>
-        <img alt="switch camera" id="js-switch-camera" src="./resources/icon-camera.png" class="main__icon" />
-        <button id="js-take-pic">Analyze Object</button>
         <div id="js-error-msg"></div>
         <div id="js-labels"></div>
     </div>

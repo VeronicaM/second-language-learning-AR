@@ -53,16 +53,16 @@ function handleError(res, statusCode) {
 
 function addTranslations(words, {interfaceLang, courseLang}) {
     const result = words && words.map((word) => {
-        const result = translateController.translateWord({text: word.text, interfaceLang, courseLang});
+        const result = translateController.translateWord({text: word.text || word.description, interfaceLang, courseLang});
         return result;
     });
-
+   
     return Promise.all(result).then((translateWords) => {
         return translateWords;
     });
 }
 
-// Gets a list of Things
+// Gets a list of Words
 exports.index = function(req, res) {
     return Word.find({})
         .exec()
@@ -109,3 +109,5 @@ exports.destroy = function(req, res) {
         .then(removeEntity(res))
         .catch(handleError(res));
 }
+
+exports.addTranslations = addTranslations;
