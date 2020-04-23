@@ -4,6 +4,11 @@ This is a project that allows you to use your webcam to identify objects, people
 
 This Medium [post](https://medium.com/@veraalina/learn-new-languages-with-busuu-and-google-vision-api-9d6931bf0305) describes its implementation in more details
 
+## Hosting
+
+This app has been hosted on heroku [here](https://ar-sll.herokuapp.com/)
+If you are on a MAC please use Safari or Mozilla to view it as in Chrome there seems to be an issue with webcam permissions. 
+
 ## Tech stack used
 - NodeJS >= "10.x.x"
 - MongoDB
