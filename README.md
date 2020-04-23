@@ -27,7 +27,7 @@ If you are on macOS please use Safari or Mozilla to view it as in Chrome there s
 
 
 **Caution**
-This was implemented as a OKR side project and it's not suitable for production environments.
+This was implemented as a OKR side project at Busuu and it's not suitable for production environments.
 
 
 
