@@ -1,4 +1,4 @@
-# AR-SLL
+# Second Language Learning AR
 
 This is a project that allows you to use your webcam to identify objects, people etc. using Google Vison image recognition API and see the identified labels in multiple languages.
 
