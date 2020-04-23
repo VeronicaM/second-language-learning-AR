@@ -16,7 +16,6 @@ module.exports = {
     mongo: {
         uri: process.env.MONGOLAB_URI ||
             process.env.MONGOHQ_URL ||
-            process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME ||
-            'mongodb://root:rootMongo1@ds135061.mlab.com:35061/busuu-ar'
+            process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME || process.env.MONGOLAB_URI_PROD
     }
 };

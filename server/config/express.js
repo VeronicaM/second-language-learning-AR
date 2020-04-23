@@ -7,7 +7,6 @@ var path = require('path');
 var express = require('express');
 var errorHandler = require('errorhandler');
 var config = require('./environment');
-var ejs = require('ejs');
 
 module.exports = function(app) {
     var env = app.get('env');
