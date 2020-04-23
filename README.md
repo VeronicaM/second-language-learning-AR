@@ -7,7 +7,7 @@ This Medium [post](https://medium.com/@veraalina/learn-new-languages-with-busuu-
 ## Hosting
 
 This app has been hosted on heroku [here](https://ar-sll.herokuapp.com/)
-If you are on a MAC please use Safari or Mozilla to view it as in Chrome there seems to be an issue with webcam permissions. 
+If you are on macOS please use Safari or Mozilla to view it as in Chrome there seems to be an issue with webcam permissions. 
 
 ## Tech stack used
 - NodeJS >= "10.x.x"
