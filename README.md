@@ -21,7 +21,7 @@ This Medium [post](https://medium.com/@veraalina/learn-new-languages-with-busuu-
 - Change the translation language from the languages dropdown
 
 
-** Caution **
+**Caution**
 This was implemented as a OKR side project and it's not suitable for production environments.
 
 
